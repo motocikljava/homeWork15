@@ -1,16 +1,38 @@
-public class humanoid {
-    /*
-    Создайте новый проект в IDEA. Создайте класс человек, у которого есть:
-- дата рождения
-- имя
-- город проживания
-Создайте объекты для следующий персон:
+import java.time.LocalDate;
 
-Напишу программу так, чтобы в консоль выводились приветственное сообщение в формате :” Привет! Меня зовут …. Я из города …. Я родился в  … году. Будем знакомы!”
-     */
+public class humanoid {
+
     String name;
-    String city;
+    private String city;
     String arbaite;
+    private int age;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        if (city != null || city.isEmpty() || city.isBlank()) {
+            this.city = city;
+        } else {
+            this.city = "Информация не указана.";
+        }
+
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        if (age != 0) {
+            this.age = age;
+        } else {
+            System.out.println("Информация не указана.");
+        }
+
+    }
+
     @Override
     public String toString() {
         return "Привет! Меня зовут "
@@ -19,19 +41,21 @@ public class humanoid {
                 + " Я работаю на должности " + arbaite;
     }
 
-    int age;
+
     public int getBirthday() {
-        int birthday = 2022 - age;
-        return birthday;
-    }
-    public humanoid(String name, String city, int age, String arbaite) {
-        this.name = name;
-        this.city = city;
         if (age >= 0) {
             this.age = age;
         } else {
             throw new NullPointerException("Введите корректный возраст");
         }
+        int birthday = LocalDate.now().getYear() - age;
+        return birthday;
+        // немного видоизменил задание не ставлю дефолтное значение, решил оставить ошибку.
+    }
+    public humanoid(String name, String city, int age, String arbaite) {
+        this.name = name;
+        this.city = city;
+        this.age = age;
 
         this.arbaite = arbaite;
     }
@@ -39,36 +63,26 @@ public class humanoid {
     public humanoid(String name, int age, String arbaite) {
         this.name = name;
         this.city = "информация не указана";
-        if (age >= 0) {
-            this.age = age;
-        } else {
-            throw new NullPointerException("Введите корректный возраст");
-        }
+        this.age = age;
 
         this.arbaite = arbaite;
     }
      public humanoid(String name, String city, int age) {
         this.name = name;
         this.city = city;
-        if (age >= 0) {
-            this.age = age;
-        } else {
-            throw new NullPointerException("Введите корректный возраст");
-        }
+        this.age = age;
+
 
         this.arbaite = "информация не указана";
     }
     public humanoid(int age, String city, String arbaite) {
         this.name = "информация не указана";
         this.city = city;
-        if (age >= 0) {
-            this.age = age;
-        } else {
-            throw new NullPointerException("Введите корректный возраст");
-        }
+        this.age = age;
 
         this.arbaite = arbaite;
     }
+
 
 
 
