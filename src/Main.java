@@ -1,29 +1,60 @@
 import transport.car;
-
+import transport.car.Insurance;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static transport.car.Insurance;
+
 
 public class Main {
     public static void main(String[] args) {
             //(String model, double engineVolume, String color, int productionYear, String productionCountry,
             //               String transmission, String bodyType, String numberOfSeats, String winOrSumSires) {
+Insurance insurLada = new Insurance(2022, 1.1, 1);
+Insurance insurAudi = new Insurance(2022, 1.1, 1);
+Insurance insurBmw = new Insurance(2022, 1.1, 1);
+Insurance insurHuindai = new Insurance(2023, 1.1, 1);
+Insurance insurKia = new Insurance(2022, 1.1, 1);
 
 car lada = new car("Lada Grande",1.7,"жёлтый", 2015,
         "Россиия", null, "седан", 3, 0);
+lada.setInsurance(insurLada);
+
 car audi = new car("Audi A8 50 L TDI quattro",3.0,"чёрный", 2020, "Германия",
         "автоматическая", "седан", 4, 0);
+            audi.setInsurance(insurAudi);
+
 car bmw = new car("BMW Z8",3.0, "чёрный", 2021, "Германия",
         "автоматическая", "седан", 4, 1);
+            bmw.setInsurance(insurBmw);
+
 car kia = new car("Kia Sportage 4 поколение",2.4,"красный", 2018, "Южная Корея",
         "автоматическая", "седан", 4, 1);
+            kia.setInsurance(insurKia);
+
 car huindai = new car("Hyundai Avante",1.6,"оранжевый", 2016, "Южная Корея",
         "автоматическая", "седан", 4, 0);
+            huindai.setInsurance(insurHuindai);
+
+
+
         System.out.println(lada);
+        insurLada.validStrahovka();
+       insurLada.checkVal();
         System.out.println(audi);
-        System.out.println(bmw);
+        insurAudi.checkVal();
+        insurAudi.validStrahovka();
+       System.out.println(bmw);
+       insurBmw.validStrahovka();
+        insurBmw.checkVal();
         System.out.println(kia);
+        insurKia.validStrahovka();
+        insurKia.checkVal();
         System.out.println(huindai);
+        insurHuindai.validStrahovka();
+        insurHuindai.checkVal();
+        car.autoNumber();
 
         humanoid max = new humanoid(29, "Москва", "бренд-менеджер");
         humanoid anya = new humanoid("Аня", "Москва", 29, "методист образовательных программ");
@@ -44,19 +75,13 @@ car huindai = new car("Hyundai Avante",1.6,"оранжевый", 2016, "Южна
         System.out.println(hriz);
         System.out.println(pion);
         System.out.println(gips);
-            Scanner scan = new Scanner(System.in);
-            System.out.println("Введите автомобильный номер в формате х000хх000");
-            String number = scan.nextLine();
 
 
-        Pattern pattern = Pattern.compile("^[авекмнорстух]{1}[0-9]{3}(?<!0{3})[авекмнорстух]{2}[0-9]{3}$");
-            Matcher matcher1 = pattern.matcher(number);
-            if (matcher1.find() == true) {
-                    System.out.println("номер введён корректно");
-            } else {
-                    throw new NullPointerException("Введите номер автомобиля по заданным параметрам");
-            }
+        /*
 
+
+
+         */
 
     }
     }
