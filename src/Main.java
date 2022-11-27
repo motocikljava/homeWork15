@@ -1,82 +1,87 @@
+import transport.car;
+import transport.car.Insurance;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static transport.car.Insurance;
+
+
 public class Main {
     public static void main(String[] args) {
-       /* - Максим из города Минск, которому 35 лет
-                - Аня из города Москва, которой 29 лет
-                - Катя из города Калининград, которой 28 лет
-                - Артем из города Москва, которому 27 лет
-                - Максим работает бренд-менеджером
-- Аня работает методистом образовательных программ
-- Катя работает продакт-менеджером
-- Артем работает директором по развитию бизнеса
+            //(String model, double engineVolume, String color, int productionYear, String productionCountry,
+            //               String transmission, String bodyType, String numberOfSeats, String winOrSumSires) {
+Insurance insurLada = new Insurance(2022, 1.1, 1);
+Insurance insurAudi = new Insurance(2022, 1.1, 1);
+Insurance insurBmw = new Insurance(2022, 1.1, 1);
+Insurance insurHuindai = new Insurance(2023, 1.1, 1);
+Insurance insurKia = new Insurance(2022, 1.1, 1);
 
-        */
+car lada = new car("Lada Grande",1.7,"жёлтый", 2015,
+        "Россиия", null, "седан", 3, 0);
+lada.setInsurance(insurLada);
 
-        Humanoid max = new Humanoid();
-        max.age = 35;
-        max.city = "Минск";
-        max.name = "Пётр";
-        max.arbaite = "бренд-менеджер.";
-        max.say();
-        Humanoid anya = new Humanoid();
-        anya.age = 29;
-        anya.city = "Москва";
-        anya.name = "Аня";
-        anya.arbaite = "методист образовательных программ.";
-        anya.say();
-        Humanoid kate = new Humanoid();
-        kate.age = 28;
-        kate.city = "Калининград";
-        kate.name = "Катя";
-        kate.arbaite = "продакт-менеджер.";
-        kate.say();
-        Humanoid artemon = new Humanoid();
-        artemon.age = 27;
-        artemon.city = "Москва";
-        artemon.name = "Артём";
-        artemon.arbaite = "директорор по развитию бизнеса.";
-        artemon.say();
+car audi = new car("Audi A8 50 L TDI quattro",3.0,"чёрный", 2020, "Германия",
+        "автоматическая", "седан", 4, 0);
+            audi.setInsurance(insurAudi);
+
+car bmw = new car("BMW Z8",3.0, "чёрный", 2021, "Германия",
+        "автоматическая", "седан", 4, 1);
+            bmw.setInsurance(insurBmw);
+
+car kia = new car("Kia Sportage 4 поколение",2.4,"красный", 2018, "Южная Корея",
+        "автоматическая", "седан", 4, 1);
+            kia.setInsurance(insurKia);
+
+car huindai = new car("Hyundai Avante",1.6,"оранжевый", 2016, "Южная Корея",
+        "автоматическая", "седан", 4, 0);
+            huindai.setInsurance(insurHuindai);
+
+
+
+        System.out.println(lada);
+        insurLada.validStrahovka();
+       insurLada.checkVal();
+        System.out.println(audi);
+        insurAudi.checkVal();
+        insurAudi.validStrahovka();
+       System.out.println(bmw);
+       insurBmw.validStrahovka();
+        insurBmw.checkVal();
+        System.out.println(kia);
+        insurKia.validStrahovka();
+        insurKia.checkVal();
+        System.out.println(huindai);
+        insurHuindai.validStrahovka();
+        insurHuindai.checkVal();
+        car.autoNumber();
+
+        humanoid max = new humanoid(29, "Москва", "бренд-менеджер");
+        humanoid anya = new humanoid("Аня", "Москва", 29, "методист образовательных программ");
+        humanoid tema = new humanoid("Артём", "Москва", 27, "директор по развитию бизнеса");
+        humanoid kate = new humanoid("Катя", "Калининград", 28, "продакт-менеджер");
+        humanoid vlad = new humanoid("Владимир", "Казань", 21);
+        System.out.println(vlad);
+        System.out.println(max);
+        System.out.println(anya);
+        System.out.println(tema);
+        System.out.println(kate);
+
+        flower rose = new flower("красный", "Голландия", 15.00, "Роза");
+        flower hriz = new flower("Россия", 15.0, "Хризантема", 5);
+        flower pion = new flower(null, "Англия", 69.9, "Пион", 1);
+        flower gips = new flower("жёлтый", "Турция", 19.5, "Гипсофила", 10);
+        System.out.println(rose);
+        System.out.println(hriz);
+        System.out.println(pion);
+        System.out.println(gips);
+
+
         /*
-        - Lada Grande, 2015 год выпуска, сборка в России, желтого цвета, объем двигателя - 1,7
-- Audi A8 50 L TDI quattro, 2020 год выпуска, сборка в Германии, черный цвет кузова, объем двигателя 3.0 литра
-- BMW Z8, сборка в Германии в 2021 году, черный цвет кузова, объем – 3.0
-- Kia Sportage 4 поколение, 2018 год выпуска, сборка в Южной Корее, цвет кузова красный, объем двигателя – 2,4 литра.
-- Hyundai Avante, сборка в Южной Корее, цвет кузова оранжевый, объем двигателя - 1,6 литра, год выпуска - 2016 год.
+
+
+
          */
-        Car lada = new Car();
-        lada.model = "Lada Grande";
-        lada.productionYear = 2015;
-        lada.productionCountry = "Россия";
-        lada.color = "цвет кузова жёлтый";
-        lada.engineVolume = 1.7;
-        lada.info();
-        Car audi = new Car();
-        audi.model = "Audi A8 50 L TDI quattro";
-        audi.productionYear = 2020;
-        audi.productionCountry = "Германия";
-        audi.color = "черный";
-        audi.engineVolume = 3.8;
-        audi.info();
-        Car bmw = new Car();
-        bmw.model = "BMW Z8";
-        bmw.productionYear = 2021;
-        bmw.productionCountry = "Германия";
-        bmw.color = "чёрный";
-        bmw.engineVolume = 3.0;
-        bmw.info();
-        Car kia = new Car();
-        kia.model = "Kia Sportage 4 поколение";
-        kia.productionYear = 2018;
-        kia.productionCountry = "Южная Корея";
-        kia.color = "красный";
-        kia.engineVolume = 2.4;
-        kia.info();
-        Car huindai = new Car();
-        kia.model = "Hyundai Avante";
-        kia.productionYear = 2016;
-        kia.productionCountry = "Южная Корея";
-        kia.color = "оранжевый";
-        kia.engineVolume = 1.6;
-        kia.info1();
 
     }
-}
+    }
